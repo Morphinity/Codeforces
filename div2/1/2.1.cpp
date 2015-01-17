@@ -1,0 +1,71 @@
+#include<iostream>
+#include<string>
+#include<cctype>
+using namespace std;
+
+int main(){
+  int n;
+  cin >> n;
+  while(n--){
+    string str;
+    cin >> str;
+    bool flag = 0;
+    if(str[0] != 'R')
+      flag = 1;
+    else{
+      if(!isdigit(str[1]))
+	flag = 1;
+      else{
+	int i=1;
+	while(i < str.length() && isdigit(str[i]))
+	  i++;
+	if(i == str.length())
+	  flag = 1;
+      }
+    }
+    if(!flag){
+      int i=1;
+      while(str[i] != 'C')
+	i++;
+      string row = str.substr(1,i-1);
+      string temp = str.substr(i+1);
+      long long col = 0;
+      for(int i=0; i<temp.length(); i++)
+	col = col*10 + (temp[i]-'0');
+      string x = "";
+      char s;
+      while(col){
+	if(col%26==0)
+	  s = 'Z';
+	else
+	  s = col%26 -1 + 'A';
+	x = s+x;
+	col/= 26;
+      }
+      cout << x << row << endl;
+    }
+    else{
+      int i=0;
+      while(!isdigit(str[i])){
+	i++;
+      }
+      string col = str.substr(0,i);
+      string row = str.substr(i);
+      long long x=0;
+      for(int i=0; i<col.length(); i++){
+	x = x*26 + (col[i]-'A'+1);
+      }
+      /*
+      col = "";
+      string s;
+      while(x){
+	s = x%10+'0';
+	col = s+col;
+	x/=10;
+      }
+      */
+      cout << 'R' << row << 'C' << x << endl;
+    }
+  }
+  return 0;
+}

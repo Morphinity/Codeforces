@@ -1,0 +1,33 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+
+int main(){
+  int m;
+  cin >> m;
+  int disc[m];
+  for(int i=0; i<m; i++)
+    cin >> disc[m];
+
+  int n;
+  cin >> n;
+  int arr[n];
+  vector<int> cost;
+  vector<int>::iterator it = cost.begin();
+  for(; it!=cost.end(); it++)
+    cin >> *it;
+  it = cost.begin();
+  sort(it,it+n);
+
+  for(int i=0; i<n; i++)
+    arr[n-i-1] = *it;
+
+  for(int j=0; j<n;j++)
+    cout << arr[j] << " ";
+  cout << endl;
+
+  return 0;
+}

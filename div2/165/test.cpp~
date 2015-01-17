@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+
+int log4(int a){
+  int ct = 0;
+  while(a>0){
+    ct++;
+    a/=4;
+  }
+  return ct;
+}
+
+int main(){
+
+  int n;
+  cin >> n;
+  cout << log4(n) << endl;
+  return 0;
+}

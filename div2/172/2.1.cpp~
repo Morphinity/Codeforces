@@ -1,0 +1,36 @@
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+int main(){
+  int x,y,n;
+  cin >> x >> y >> n;
+  double min = INT_MAX;
+  int as;
+  int bs;
+  long long a,b;
+  double temp1,temp2;
+  for(b = 1; b<=n; b++){
+    a = (b*x)/y;
+    temp1 = (y*a - b*x);
+    temp2 = (y*(a+1)-b*x);
+    if(temp1 < 0)
+      temp1 *= -1;
+    if(temp2 < 0)
+      temp2 *= -1;
+    temp2 = temp2/(y*b*1.0);
+    if(temp2 < min){
+      as = a+1;
+      bs = b;
+      min = temp2;
+    }
+    temp1 = temp1/(y*b*1.0);
+    if(temp1 < min){
+      as = a;
+      bs = b;
+      min = temp1;
+    }  
+  }
+  cout << as << "/" << bs << endl;
+  return 0;
+}
